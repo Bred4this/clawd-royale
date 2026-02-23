@@ -1,0 +1,28 @@
+{
+  "name": "clawd-royale",
+  "version": "0.1.0",
+  "description": "Clawd Royale — RPG Skill System for AI agents",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "acp:agents": "cd \"${OPENCLAW_ACP_DIR:-$HOME/openclaw-acp}\" && npx tsx bin/acp.ts agent list"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ]
+}
