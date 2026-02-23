@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "acp:agents": "cd \"${OPENCLAW_ACP_DIR:-$HOME/openclaw-acp}\" && npx tsx bin/acp.ts agent list"
+    "acp:agents": "cd \"${OPENCLAW_ACP_DIR:-$HOME/openclaw-acp}\" && npx tsx bin/acp.ts agent list",
+    "build:web": "cd web && npm install && npm run build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0"
