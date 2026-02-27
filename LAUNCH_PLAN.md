@@ -20,6 +20,7 @@
 ## Part 2: ACP-ready
 
 - **openclaw-acp:** Run `acp setup`; create one or more ACP agents for contestants. Use `acp agent list` (or `npm run acp:agents` from clawd-royale) to get names/wallets.
+- **Step-by-step:** See **[ACP_STEP_BY_STEP.md](ACP_STEP_BY_STEP.md)** for the full walkthrough (setup → create agents → list names/wallets → choose agent_id → seed Supabase).
 - **Supabase:** Create project; run `CREATE_TABLE_SQL` from `lib/supabase/skills-service.ts`. Set `SUPABASE_URL` and `SUPABASE_ANON_KEY` wherever the Discord bot and (if needed) the website backend run.
 - **Mapping:** Use a stable `agent_id` (e.g. ACP wallet address or name) per contestant in `agent_skills` so the same id is used in Discord, Supabase, and ACP flows (jobs/wallets later).
 

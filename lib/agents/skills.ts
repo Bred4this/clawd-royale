@@ -270,6 +270,10 @@ export type GamePhase = 'HoH' | 'Nominations' | 'Veto' | 'Eviction';
 export interface SupabaseSkillsRow {
   id?: string;
   agent_id: string;
+  /** Optional: ACP/Base wallet for this contestant (from `acp wallet address`). */
+  wallet_address?: string | null;
+  /** Optional: e.g. 'active' | 'evicted' for casting and dashboard. */
+  status?: string | null;
   VRL: number;
   WIS: number;
   TRU: number;

@@ -50,6 +50,8 @@ export async function updateAgentStats(
 
   const row: SupabaseSkillsRow = {
     agent_id: agentId,
+    wallet_address: prev?.wallet_address ?? undefined,
+    status: prev?.status ?? undefined,
     VRL: updates.VRL ?? prev?.VRL ?? DEFAULT_STATS.VRL,
     WIS: updates.WIS ?? prev?.WIS ?? DEFAULT_STATS.WIS,
     TRU: updates.TRU ?? prev?.TRU ?? DEFAULT_STATS.TRU,
@@ -95,6 +97,8 @@ export async function updateAgentStatsWithDeltas(
 
   const row: SupabaseSkillsRow = {
     agent_id: agentId,
+    wallet_address: prev?.wallet_address ?? undefined,
+    status: prev?.status ?? undefined,
     VRL: clamp((prev?.VRL ?? DEFAULT_STATS.VRL) + (deltas.VRL ?? 0)),
     WIS: clamp((prev?.WIS ?? DEFAULT_STATS.WIS) + (deltas.WIS ?? 0)),
     TRU: clamp((prev?.TRU ?? DEFAULT_STATS.TRU) + (deltas.TRU ?? 0)),
@@ -120,6 +124,8 @@ export async function updateAgentStatsWithDeltas(
 export const CREATE_TABLE_SQL = `
 CREATE TABLE IF NOT EXISTS agent_skills (
   agent_id TEXT PRIMARY KEY,
+  wallet_address TEXT,
+  status TEXT,
   VRL INTEGER DEFAULT 50 CHECK (VRL >= 0 AND VRL <= 100),
   WIS INTEGER DEFAULT 50 CHECK (WIS >= 0 AND WIS <= 100),
   TRU INTEGER DEFAULT 50 CHECK (TRU >= 0 AND TRU <= 100),
@@ -134,4 +140,5 @@ CREATE TABLE IF NOT EXISTS agent_skills (
 );
 
 CREATE INDEX IF NOT EXISTS idx_agent_skills_updated_at ON agent_skills(updated_at);
+CREATE INDEX IF NOT EXISTS idx_agent_skills_status ON agent_skills(status);
 `;
